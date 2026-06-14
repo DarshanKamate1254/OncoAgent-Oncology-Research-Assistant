@@ -14,7 +14,7 @@ from ragas import evaluate
 from ragas.llms import llm_factory
 from ragas.embeddings import OpenAIEmbeddings
 from ragas.metrics import faithfulness, answer_relevancy, context_precision
-from advisor import get_clinical_response
+from langraph.agent_graph import get_clinical_response
 from tools.rag_retriever import retrieve_clinical_guidelines
 
 def run_ragas_evaluation():

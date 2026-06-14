@@ -2,7 +2,7 @@ from fastapi import FastAPI, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
-from advisor import get_clinical_response, get_clinical_response_stream
+from langraph.agent_graph import get_clinical_response, get_clinical_response_stream
 from file_handler import save_uploaded_file, get_uploaded_files
 from rag.pipeline import run_parsing_pipeline
 
