@@ -1,7 +1,8 @@
 from fastapi import FastAPI, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
-from advisor import get_clinical_response
+from advisor import get_clinical_response, get_clinical_response_stream
 from file_handler import save_uploaded_file, get_uploaded_files
 from rag.pipeline import run_parsing_pipeline
 
@@ -28,8 +29,10 @@ async def get_message():
 
 @app.post("/api/chat")
 async def chat(request: ChatRequest):
-    response_text = get_clinical_response(request.message)
-    return {"response": response_text}
+    return StreamingResponse(
+        get_clinical_response_stream(request.message),
+        media_type="text/plain"
+    )
 
 @app.post("/api/upload")
 async def upload_file(file: UploadFile):

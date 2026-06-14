@@ -146,13 +146,29 @@ export default function Home() {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      const data = await response.json();
-      
+      if (!response.body) {
+        throw new Error("No response body available for streaming.");
+      }
+
+      const assistantMsgId = `assistant-${++messageIdCounter.current}`;
       setMessages(prev => [...prev, {
-        id: `assistant-${++messageIdCounter.current}`,
+        id: assistantMsgId,
         role: "assistant",
-        content: data.response
+        content: ""
       }]);
+      setIsLoading(false);
+
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+
+      while (true) {
+        const { value, done } = await reader.read();
+        if (done) break;
+        const chunk = decoder.decode(value, { stream: true });
+        setMessages(prev => prev.map(msg => 
+          msg.id === assistantMsgId ? { ...msg, content: msg.content + chunk } : msg
+        ));
+      }
     } catch (error) {
       console.error("Failed to connect to backend, running fallback:", error);
       
