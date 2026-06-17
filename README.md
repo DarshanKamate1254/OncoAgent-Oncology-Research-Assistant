@@ -1,10 +1,10 @@
-# 🧬 OncoAgent: Oncology Research Assistant
+# OncoAgent: Oncology Research Assistant
 
 OncoAgent is a state-of-the-art oncology research assistant built using a multi-agent **Advisor-Critic** architecture. It leverages a Retrieval-Augmented Generation (RAG) pipeline to query and synthesize insights from clinical reference documents, clinical trials, and oncology guidelines stored in a local vector database.
 
 ---
 
-## 🏗️ Architecture Overview
+## Architecture Overview
 
 The application is split into a Next.js frontend and a FastAPI backend orchestrating the agent workflows via LangGraph.
 
@@ -37,7 +37,7 @@ graph TD
 
 ---
 
-## 🛠️ Technology Stack
+## Technology Stack
 
 | Layer | Technologies |
 | :--- | :--- |
@@ -51,7 +51,7 @@ graph TD
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```
 ├── backend/                  # FastAPI Application
@@ -84,7 +84,7 @@ graph TD
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 - Python 3.12+ (managed natively via `uv`)
@@ -120,7 +120,7 @@ graph TD
 
 ---
 
-## 🏃 Running the Application
+## Running the Application
 
 ### 1. Start the FastAPI Backend
 From the root directory, activate your virtual environment and run the FastAPI app (or run via `uv`):
@@ -146,7 +146,7 @@ uv run python backend/rag/evaluate.py
 
 ---
 
-## 📐 Development Guidelines
+## Development Guidelines
 
 * **Max 70 Lines per Backend File**: Keep Python modules lean, single-purpose, and highly modular.
 * **No Tailwind CSS**: Keep styling scoped using **Vanilla CSS Modules** (e.g., `Component.module.css`).
