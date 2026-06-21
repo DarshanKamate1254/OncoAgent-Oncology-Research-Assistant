@@ -123,11 +123,30 @@ graph TD
 ## Running the Application
 
 ### 1. Start the FastAPI Backend
-From the root directory, activate your virtual environment and run the FastAPI app (or run via `uv`):
+Start the FastAPI app using `uv` (either by navigating into the `backend/` directory or by setting the `PYTHONPATH` environment variable):
+
+#### Option A: Run from the `backend/` directory (Recommended)
 ```bash
-# If using uv directly:
-uv run uvicorn backend.main:app --host 127.0.0.1 --port 8000 --reload
+cd backend
+uv run uvicorn main:app --host 127.0.0.1 --port 8000 --reload
 ```
+
+#### Option B: Run from the root directory with `PYTHONPATH`
+- **Windows (PowerShell)**:
+  ```powershell
+  $env:PYTHONPATH="backend"
+  uv run uvicorn backend.main:app --host 127.0.0.1 --port 8000 --reload
+  ```
+- **Windows (CMD)**:
+  ```cmd
+  set PYTHONPATH=backend
+  uv run uvicorn backend.main:app --host 127.0.0.1 --port 8000 --reload
+  ```
+- **Linux / macOS**:
+  ```bash
+  PYTHONPATH=backend uv run uvicorn backend.main:app --host 127.0.0.1 --port 8000 --reload
+  ```
+
 The API documentation will be available at `http://127.0.0.1:8000/docs`.
 
 ### 2. Start the Next.js Frontend

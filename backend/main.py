@@ -1,3 +1,9 @@
+import os
+import sys
+
+# Ensure backend directory is in the Python Path
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
 from fastapi import FastAPI, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
